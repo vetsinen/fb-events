@@ -9,6 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "fbgraph": "^1.4.1"
+    "fbgraph": "^1.4.1",
+    "geocoder": "^0.2.3",
+    "google-distance": "^1.0.1"
   }
 }
