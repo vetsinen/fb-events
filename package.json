@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.16.2",
     "fbgraph": "^1.4.1",
     "geocoder": "^0.2.3",
     "google-distance": "^1.0.1"
