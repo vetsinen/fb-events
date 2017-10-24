@@ -1,6 +1,6 @@
 const graph = require('fbgraph');
 const metro = require('./metro-locs');
-graph.setAccessToken("EAACEdEose0cBAJeGkXrBR5Ej7vFaxZABR7uuGGhZBpgfkyQXrZC1FGyhrba71JtRmDZCX6rwaXrsJTbZAQYt8WnCVkKVMgvHsHg2me9vuuXfvCrzXsIgHKn3LJDRG7miTFZBuBLIgQAZBXcVvWiJW1tvojEqZBMtXi3EbQZAQfQvcZCH1f7WDHI84ByVy2dJl1P19zz6xchDqXCgZDZD");
+graph.setAccessToken("EAACEdEose0cBAKXZBUzCiCVlXScZAPeQF3KoFhr4OncK4edo69aAg9UZAjiNp5JwHgUW9lAbENUWwTaIl2N6aimPIZAQ9Drgxh8fPCFSVHlblLe0NtzxHmdtzmhBABIfIU2eB7aofEASi7pV4zvW8O4fjUIMZAZB6mc9P5GxjNvZAuloCtVI7QHgWRL7bQRzJkaHGYvPjkpeQZDZD");
 let evstore = [];
 
 //TODO define current date
@@ -20,7 +20,7 @@ async function main(type = "attending") {
         for (let i = rez.data.length - 1; i > -1; i--) {
             let cur = rez.data[i];
             let filter = date === cur.start_time.substring(0, 10);
-            if (true) {
+            if (filter) {
                 console.log(rez.data[i].name, ' ',
                     metro.closestMetro(cur.place.location.latitude, cur.place.location.longitude),
                     cur.place.name);//rez.data[i].rsvp_status,' ',cur.start_time.substring(0,10)

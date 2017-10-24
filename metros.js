@@ -72,10 +72,10 @@ async function surfMetro() {
             loc = res.results[0].geometry.location;
             locations[stations[i]] = loc;
             console.log(fullst, loc);
-            let waitTill = new Date(new Date().getTime() + 2 * 1000);
-            while (waitTill > new Date()) {}
             i--;
         }
+        let waitTill = new Date(new Date().getTime() + 2 * 1000);
+        while (waitTill > new Date()) {}
         else {console.log('some shit');}
 
     }

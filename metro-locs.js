@@ -68,17 +68,38 @@ function distance2(lon1, lat1, lon2, lat2) {
     return Math.round(1000*d);
 }
 
-exports.closestMetro = function (lat1 = 50.450793, lng1 = 30.458139) {
-    let min = 100000, dist, res;
+exports.closestMetro = function (lat1 = 50.450793, lng1 = 30.458139,num=3) {
+    function mysort(a) {
+        let al=a.length;
+        let more = true;
+        while (more) {
+            more = false;
+            for (let i=0;i<al-1;i++){
+                if (a[i].distance>a[i+1].distance){
+                    more=true;
+                    let t=a[i];a[i]=a[i+1];a[i+1]=t;
+                }
+            }
+        }
+        return a;
+    }
+    function arr2line(a) {
+        let rez= '';
+        for (let i=0;i<a.length;i++){rez=rez+a[i].title+":"+a[i].distance+'/'}
+        return rez;
+    }
+    let dist, res, distances=[];
     for (m in locations) {
         let el = locations[m];
         dist = distance2(lat1, lng1, el.lat, el.lng);
-        if (min > dist) {
-            min = dist;
-            res = m;
-        }
+        distances.push({title:m,distance:dist});
     }
-    return res+":"+min;
+    // distances = mysort(distances);
+    // [3,10].sort(function (a, b) { return a - b; });
+    distances.sort((a,b)=>a.distance-b.distance);
+    for (let i=distances.length-1;i>-1;i--) {
+        distances[i].distance=100*Math.round(distances[i].distance/100)}
+    return arr2line(distances.slice(0,num));
 };
 
 // console.log(exports.closestMetro(50.437298, 30.578713));
