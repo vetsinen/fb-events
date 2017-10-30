@@ -1,1 +1,1 @@
-very useful project
+very useful project to grab event list
