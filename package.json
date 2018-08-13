@@ -13,6 +13,7 @@
     "facebook-events-by-location-core": "^0.11.0",
     "fbgraph": "^1.4.1",
     "geocoder": "^0.2.3",
-    "google-distance": "^1.0.1"
+    "google-distance": "^1.0.1",
+    "node-geocoder": "^3.22.0"
   }
 }

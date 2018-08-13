@@ -1,1 +1,1 @@
-very useful project to grab event list
+facebook event api is dead

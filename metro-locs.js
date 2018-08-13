@@ -53,6 +53,9 @@ var locations = {
     'Академмістечко': {lat: 50.464936, lng: 30.355272}
 };
 
+/**
+ * toRad helper function
+ */
 if (typeof(Number.prototype.toRad) === "undefined") {
     Number.prototype.toRad = function () {
         return this * Math.PI / 180;
@@ -73,26 +76,9 @@ function distance2(lon1, lat1, lon2, lat2) {
 }
 
 /**
- * provides list of closest metro stations
- * return {Array}
+ * provides string with list of closest metro stations
 */
 exports.closestMetro = function (lat1 = 50.450793, lng1 = 30.458139, num = 1) {
-    function mysort(a) {
-        let al = a.length;
-        let more = true;
-        while (more) {
-            more = false;
-            for (let i = 0; i < al - 1; i++) {
-                if (a[i].distance > a[i + 1].distance) {
-                    more = true;
-                    let t = a[i];
-                    a[i] = a[i + 1];
-                    a[i + 1] = t;
-                }
-            }
-        }
-        return a;
-    }
 
     function arr2line(a) {
         let rez = '';
@@ -103,7 +89,7 @@ exports.closestMetro = function (lat1 = 50.450793, lng1 = 30.458139, num = 1) {
     }
 
     let dist, res, distances = [];
-    for (m in locations) {
+    for (var m in locations) {
         let el = locations[m];
         dist = distance2(lat1, lng1, el.lat, el.lng);
         distances.push({title: m, distance: dist});

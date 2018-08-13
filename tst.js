@@ -1,10 +1,29 @@
 'use strict';
-let geocoder = require('geocoder');
-let metro = require('./metro-locs');
-geocoder.geocode("вулиця Жилянського 35, Київ, Україна", function ( err, data ) {
-  // console.log(data.results[0]);
-  console.log(metro.closestMetro(data.results[0].geometry.location.lat, data.results[0].geometry.location.lng));
+
+var EventSearch = require("facebook-events-by-location-core");
+
+var es = new EventSearch();
+
+es.search({
+    "lat": 40.710803,
+    "lng": -73.964040,
+    "accessToken":"EAAH4IuWa9ZAgBAEHecNuDf0SVL8uplFGAZBuFoZAKKBZAu9GTuMWUkCMBdZCHDOScqZCj5Fe6X6Pcuv4t9ZAeE8djHq3O9GW6wnHfsCGMJEYfZCRoO0WlfILGjYMfO0JPfBAatoRNAavZCbcMTBcjDOJm6Qf0KzH3szCOxY19pWDuAdNIpaenqqzNfVdzdkQtWvHsOkWVlN7W2QZDZD"
+}).then(function (events) {
+    console.log(JSON.stringify(events));
+}).catch(function (error) {
+    console.error(JSON.stringify(error));
 });
+
+// var NodeGeocoder = require('node-geocoder');
+// var geocoder = NodeGeocoder();
+//
+// let metro = require('./metro-locs');
+// geocoder.geocode("вулиця Жилянського 35, Київ, Україна", function ( err, data ) {
+//   console.log(data[0]);
+//   console.log(metro.closestMetro(data[0].latitude, data[0].longitude)); //returns closest station
+// });
+
+
 // let v = [{name: "нода", packages: 100}, {name: 'пайтон', packages: 300}, {name: 'рубі', packages: 117}];
 // v.sort((a, b) => a.packages > b.packages);
 // console.log(v);
