@@ -1,3 +1,10 @@
+/**
+ * helper script to get coordinates of different metro stations
+ * may be launched only one time
+ *
+ * @type {string[]}
+ * @fileOverview helper script to get coordinates of different metro stations
+ */
 let stations = [
     "Академмістечко"
     , "Житомирська"
@@ -49,11 +56,11 @@ let stations = [
     'Бориспільська',
     'Червоний хутір',
 ];
-var locations = {};
+var locations = {}; //initially list is empty
 
-let geocoder = require('geocoder');
+let geocoder = require('geocoder'); //external module plugged in
 
-async function asyncGeocode(fullst) {
+async function asyncGeocode(fullst) { //wrapper for asyns module
     return new Promise((resolve) => {
         geocoder.geocode(fullst, function (err, res) {
             resolve(res);
@@ -68,15 +75,20 @@ async function surfMetro() {
         fullst = "станція метро " + stations[i] + ", Київ, Україна";
         res = await asyncGeocode(fullst);
         console.log(res);
-        if (res.results.length>0) {
+        if (res.results.length > 0) {
             loc = res.results[0].geometry.location;
             locations[stations[i]] = loc;
             console.log(fullst, loc);
             i--;
         }
-        let waitTill = new Date(new Date().getTime() + 2 * 1000);
-        while (waitTill > new Date()) {}
-        else {console.log('some shit');}
+        //WTF ????
+        // let waitTill = new Date(new Date().getTime() + 2 * 1000);
+        // do {
+        // } while (waitTill > new Date())
+    else
+        {
+            console.log('some shit');
+        }
 
     }
     console.log(locations);

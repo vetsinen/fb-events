@@ -1,3 +1,7 @@
+/**
+ * @fileOverview: starts express app
+ * @type {createApplication}
+ */
 var express = require('express');
 var app = express();
 let geocoder = require('geocoder');

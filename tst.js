@@ -1,9 +1,9 @@
+'use strict';
 let geocoder = require('geocoder');
 let metro = require('./metro-locs');
 geocoder.geocode("вулиця Жилянського 35, Київ, Україна", function ( err, data ) {
   // console.log(data.results[0]);
-  console.log(metro.closestMetro(data.results[0].geometry.location.lat,
-      data.results[0].geometry.location.lng));
+  console.log(metro.closestMetro(data.results[0].geometry.location.lat, data.results[0].geometry.location.lng));
 });
 // let v = [{name: "нода", packages: 100}, {name: 'пайтон', packages: 300}, {name: 'рубі', packages: 117}];
 // v.sort((a, b) => a.packages > b.packages);
